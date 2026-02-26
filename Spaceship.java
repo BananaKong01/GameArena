@@ -18,10 +18,27 @@ public class Spaceship {
         }
     }
 
+    // Removes character from game arena
+    public void removeFrom(GameArena arena) {
+        for (int i = 0; i < ship.length; i++) {
+            arena.removeRectangle(ship[i]);
+        }
+    }
+
     // Moves character relative to current position
     public void move(int move_x, int move_y) {
         for (int i = 0; i < ship.length; i++) {
             ship[i].move(move_x, move_y);
         }
+    }
+
+    // Returns each rectangle in array, used to check collisions
+    public Rectangle access_collision(int i) {
+        return ship[i];
+    }
+
+    // Returns number of rectangles in array, used to ensure correct no of loops when checkign collisions
+    public int access_length() {
+        return ship.length;
     }
 }

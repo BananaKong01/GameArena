@@ -25,15 +25,18 @@ public class Asteroid {
         }
     }
 
-    public void checkCollision(Spaceship s) {
+    // Checks whether asteroid touches character
+    public void checkCollision(Spaceship s, GameArena arena) {
         boolean collision = false;
         for (int i = 0; i < asteroid.length; i++) {
-            if (asteroid[i].collides(/*loop through array here*/)) {
-                collision = true;
+            for (int j = 0; j < s.access_length(); j++) {
+                if (asteroid[i].collides(s.access_collision(j))) {
+                    collision = true;
+                }
             }
         }
         if (collision) {
-            s = null;
+            s.removeFrom(arena);
         }
     }
 }
